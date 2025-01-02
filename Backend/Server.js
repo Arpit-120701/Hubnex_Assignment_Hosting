@@ -10,7 +10,7 @@ const app = express()
 
 app.use(cors(
     {
-        origin:["https://hubnex-assignment-hosting.vercel.app"],
+        origin:"https://hubnex-assignment-hosting.vercel.app",
         methods:["POST","GET"],
         credentials:true
     }
