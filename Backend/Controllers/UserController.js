@@ -24,7 +24,7 @@ const addUser = async(req , res) => {
     if(!name || !email )
     {
         res.status(400)
-        throw new Error("Name and emil is mandatory !!")
+        throw new Error("Name and email is mandatory !!")
     }
 
     const userExits = await User.findOne({ email });
