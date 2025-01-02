@@ -32,7 +32,7 @@ function Signup() {
                 },
               };
 
-            const { data } = await axios.post("http://localhost:5000/api/adduser",{name , email , password , graduation , phone}, config);
+            const { data } = await axios.post("https://hubnex-assignment-hosting-server.vercel.app/api/adduser",{name , email , password , graduation , phone}, config);
             console.log("User data",data)
             localStorage.setItem("userdetails", JSON.stringify(data))
             toast.success('Successfully Registered !!')
