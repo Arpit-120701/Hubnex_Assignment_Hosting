@@ -42,7 +42,7 @@ function Signup() {
         }
         catch(error)
         {
-            console.log("error hai ")
+            console.log("error ")
             toast.error('Something Wrong !')
         }
 
