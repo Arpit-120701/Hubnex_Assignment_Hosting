@@ -8,7 +8,13 @@ const connectDB  = require('./db/dbConnect')
 
 const app = express()
 
-app.use(cors());
+app.use(cors(
+    {
+        origin: 'https://hubnex-assignment-hosting-client.vercel.app', 
+        methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow necessary methods
+        credentials: true, // Include cookies if needed
+    }
+))
 
 dotenv.config()
 
