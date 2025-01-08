@@ -9,6 +9,13 @@ dotenv.config()
 
 const app = express()
 
+app.options('*', (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://hubnex-assignment-hosting-frontend.vercel.app');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.status(200).end();
+});
+
 app.use(cors(
     {
         origin:'https://hubnex-assignment-hosting-frontend.vercel.app',
