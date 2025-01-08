@@ -16,7 +16,6 @@ function Signup() {
     const [ phone , setPhone ] = useState()
     const [password, setPassword] = useState()
     const [ graduation , setGraduation ] = useState()
-    axios.defaults.withCredentials = true
 
     const navigate = useNavigate();
 
@@ -27,17 +26,17 @@ function Signup() {
         }
         try
         {
-            e.preventDefault();
             const config = {
                 headers:{
                   "Content-type":"application/json",
                 },
               };
             
-            const { data } = await axios.post("https://hubnex-assignment-hosting-server.vercel.app/api/adduser",{name , email , password , graduation , phone}, config ,{ withCredentials: true});
+            const { data } = await axios.post("https://hubnex-assignment-hosting-server-virid.vercel.app/api/adduser",{name , email , password , graduation , phone}, config );
             console.log("User data",data)
             localStorage.setItem("userdetails", JSON.stringify(data))
             toast.success('Successfully Registered !!')
+            console.log(data)
             console.log("Success")
             navigate('/dashboard')
 
