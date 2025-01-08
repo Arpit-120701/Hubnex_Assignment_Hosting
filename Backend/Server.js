@@ -5,16 +5,11 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const userRoutes = require('./Routes/UserRoutes')
 const connectDB  = require('./db/dbConnect')
+dotenv.config()
 
 const app = express()
 
-app.use(cors(
-    {
-        origin: '*', 
-    }
-))
-
-dotenv.config()
+app.use(cors())
 
 connectDB()
 
