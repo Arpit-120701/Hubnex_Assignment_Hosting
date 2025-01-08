@@ -16,22 +16,24 @@ function Signup() {
     const [ phone , setPhone ] = useState()
     const [password, setPassword] = useState()
     const [ graduation , setGraduation ] = useState()
+    axios.defaults.withCredentials = true
 
     const navigate = useNavigate();
 
-    const submitHandler = async() => {
+    const submitHandler = async(e) => {
         if(!name || !email)
         {
             toast.warning('Enter all the fields !!')
         }
         try
         {
+            e.preventDefault();
             const config = {
                 headers:{
                   "Content-type":"application/json",
                 },
               };
-
+            
             const { data } = await axios.post("https://hubnex-assignment-hosting-server.vercel.app/api/adduser",{name , email , password , graduation , phone}, config);
             console.log("User data",data)
             localStorage.setItem("userdetails", JSON.stringify(data))
