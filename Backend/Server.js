@@ -1,17 +1,17 @@
 const express = require('express')
+const mongoose =  require('mongoose')
 const dotenv = require("dotenv")
 const colors = require('colors')
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const userRoutes = require('./Routes/UserRoutes')
 const connectDB  = require('./db/dbConnect')
+const MONGO_URI = "mongodb+srv://arpit99sangamnerkar:hubnexlabs@cluster0.2jubf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 dotenv.config()
 
 const app = express()
 
 app.use(cors())
-
-connectDB()
 
 app.use(express.json())
 
@@ -25,6 +25,12 @@ app.get('/', (req, res) =>{
 
 app.use('/api',userRoutes)
 
-app.listen(PORT, ()=>{
-    console.log(`Server is running localhost@${PORT}`.white.bold)
+mongoose.connect(MONGO_URI).then(()=>{
+    console.log(`MongoDB Connected`.magenta.bold)
+    app.listen(PORT,()=>{
+        console.log(`Server is running localhost@${PORT}`)
+    })
+}).catch((error)=>{
+    console.error('Failed to connect to MongoDB:', error);
+    process.exit(1); 
 })
