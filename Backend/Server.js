@@ -23,14 +23,16 @@ app.get('/', (req, res) =>{
 
 app.use('/api',userRoutes)
 
-mongoose.connect(MONGO_URI).then(()=>{
-    console.log(`MongoDB Connected`.magenta.bold)
-    app.listen(PORT,()=>{
-        console.log(`Server is running localhost@${PORT}`)
-    })
-}).catch((error)=>{
-    console.error('Failed to connect to MongoDB:', error);
-    process.exit(1); 
-})
+connectDB()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server is running localhost@${PORT}`.white.bold);
+    });
+  })
+  .catch((error) => {
+    console.error(`Failed to connect to MongoDB: ${error.message}`);
+    process.exit(1);
+  });
+
 
 module.exports = app;
