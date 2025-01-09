@@ -11,16 +11,11 @@ dotenv.config()
 
 const app = express()
 
-app.use(cors(
-    {
-        origin:"http://localhost:3000",
-        methods:["POST","GET"],
-        allowedHeaders: 'Content-Type,Authorization',
-        credentials:true,
-        preflightContinue: true,
-        optionsSuccessStatus: 204,
-    }
-))
+app.use(cors({
+    origin: '*', // Your frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+    allowedHeaders: ['Content-Type', 'Authorization'] // Allowed headers
+  }));
 
 app.use(express.json())
 
