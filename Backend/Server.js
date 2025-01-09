@@ -13,10 +13,12 @@ const app = express()
 
 app.use(cors(
     {
-        origin:["http://localhost:3000"],
+        origin:"http://localhost:3000",
         methods:["POST","GET"],
         allowedHeaders: 'Content-Type,Authorization',
-        credentials:true
+        credentials:true,
+        preflightContinue: true,
+        optionsSuccessStatus: 204,
     }
 ))
 
