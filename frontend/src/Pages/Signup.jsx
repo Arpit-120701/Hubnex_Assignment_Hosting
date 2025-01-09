@@ -20,25 +20,39 @@ function Signup() {
     const navigate = useNavigate();
 
     const submitHandler = async(e) => {
+        e.preventDefault()
         if(!name || !email)
         {
             toast.warning('Enter all the fields !!')
         }
         try
         {
+            const formData = {
+                name  , email ,password,  graduation , phone
+            }
             const config = {
                 headers:{
                   "Content-type":"application/json",
                 },
               };
             
-            const { data } = await axios.post("https://hubnex-assignment-hosting-server.vercel.app/api/adduser",{name , email , password , graduation , phone}, config );
-            console.log("User data",data)
-            localStorage.setItem("userdetails", JSON.stringify(data))
+            //const { data } = await axios.post("https://hubnex-assignment-hosting-server.vercel.app/api/adduser",{name , email , password , graduation , phone}, config ,{ withCredentials : true } );
+
+            const response = await fetch(
+                "https://hubnex-assignment-hosting-server.vercel.app/api/adduser",
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(formData),
+                }
+              );
+              const data = await response.json();
+              console.log(data);
+            //localStorage.setItem("userdetails", JSON.stringify(data))
             toast.success('Successfully Registered !!')
-            console.log(data)
-            console.log("Success")
-            navigate('/dashboard')
+            //navigate('/dashboard')
 
         }
         catch(error)
