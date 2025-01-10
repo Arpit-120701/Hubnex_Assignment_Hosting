@@ -6,13 +6,11 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const userRoutes = require('./Routes/UserRoutes')
 const connectDB  = require('./db/dbConnect')
-const MONGO_URI = "mongodb+srv://arpit99sangamnerkar:hubnexlabs@cluster0.2jubf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-dotenv.config()
 
 const app = express()
 
 app.use(cors({
-    origin: '*', // Your frontend URL
+    origin: 'http://localhost:3000', // Your frontend URL
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
     allowedHeaders: ['Content-Type', 'Authorization'] // Allowed headers
   }));

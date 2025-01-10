@@ -27,14 +27,12 @@ function Signup() {
         }
         try
         {
-            const formData = {
-                name  , email ,password,  graduation , phone
-            }
-            const config = {
-                headers:{
-                  "Content-type":"application/json",
-                },
-              };
+            const formData = new FormData();
+            formData.append("name", name);;
+            formData.append("email", email);
+            formData.append("password", password);
+            formData.append("graduation", graduation);
+            formData.append("phone", phone);
             
             //const { data } = await axios.post("https://hubnex-assignment-hosting-server.vercel.app/api/adduser",{name , email , password , graduation , phone}, config ,{ withCredentials : true } );
 
