@@ -51,7 +51,7 @@ function Signup() {
         }
         catch(error)
         {
-            console.log("error ")
+            console.log("error ",error.message)
             toast.error('Something Wrong !')
         }
 
