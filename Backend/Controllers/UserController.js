@@ -23,14 +23,14 @@ const addUser = async(req , res) => {
 
     if(!name || !email )
     {
-        res.status(400)
+        res.status(400).json({ message: "Name and email is mandatory" });
         throw new Error("Name and email is mandatory !!")
     }
 
     const userExits = await User.findOne({ email });
 
     if(userExits){
-        res.status(400);
+        res.status(400).json({ message: "Failed to fetch!" });
         throw new Error("User Already exits !!")
     }
 
@@ -56,7 +56,7 @@ const addUser = async(req , res) => {
     }
     else
     {
-        res.status(400)
+        res.status(400).json({ message: "Failed to fetch!" });
         throw new Error("Failed to create the user ".red.bold)
     }
 }
