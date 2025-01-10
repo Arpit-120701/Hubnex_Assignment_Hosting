@@ -30,9 +30,9 @@ function Signup() {
             //const { data } = await axios.post("https://hubnex-assignment-hosting-server.vercel.app/api/adduser",{name , email , password , graduation , phone}, config ,{ withCredentials : true } );
 
             const formData = { name ,email, password , graduation , phone }
-            
+
             const response = await fetch(
-                "http://localhost:5000/api/adduser",
+                "https://hubnex-assignment-backend.vercel.app/api/adduser",
                 {
                   method: "POST",
                   headers: {

@@ -11,7 +11,7 @@ const app = express()
 
 app.use(cors(
     {
-        origin: [''], // Your frontend URL
+        origin: ['https://hubnex-assignment-hosting-frontend.vercel.app'], // Your frontend URL
         methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
         allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
         credentials: true, // Include cookies
