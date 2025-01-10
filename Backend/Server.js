@@ -9,11 +9,14 @@ const connectDB  = require('./db/dbConnect')
 
 const app = express()
 
-app.use(cors({
-    origin: 'http://localhost:3000', // Your frontend URL
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
-    allowedHeaders: ['Content-Type', 'Authorization'] // Allowed headers
-  }));
+app.use(cors(
+    {
+        origin: [''], // Your frontend URL
+        methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+        allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+        credentials: true, // Include cookies
+    }
+));
 
 app.use(express.json())
 

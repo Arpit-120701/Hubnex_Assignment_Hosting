@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from '../Components2/Navbar'
 import { Button, Fieldset, Input, Stack , Box} from '@chakra-ui/react'
 import { Field } from '../components/ui/field';
@@ -27,17 +27,12 @@ function Signup() {
         }
         try
         {
-            const formData = new FormData();
-            formData.append("name", name);;
-            formData.append("email", email);
-            formData.append("password", password);
-            formData.append("graduation", graduation);
-            formData.append("phone", phone);
-            
             //const { data } = await axios.post("https://hubnex-assignment-hosting-server.vercel.app/api/adduser",{name , email , password , graduation , phone}, config ,{ withCredentials : true } );
 
+            const formData = { name ,email, password , graduation , phone }
+            
             const response = await fetch(
-                "https://hubnex-assignment-hosting-server.vercel.app/api/adduser",
+                "http://localhost:5000/api/adduser",
                 {
                   method: "POST",
                   headers: {
@@ -50,7 +45,7 @@ function Signup() {
               console.log(data);
             //localStorage.setItem("userdetails", JSON.stringify(data))
             toast.success('Successfully Registered !!')
-            //navigate('/dashboard')
+            navigate('/dashboard')
 
         }
         catch(error)
