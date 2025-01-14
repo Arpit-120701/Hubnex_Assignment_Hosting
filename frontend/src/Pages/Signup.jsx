@@ -20,6 +20,7 @@ function Signup() {
     const navigate = useNavigate();
 
     const submitHandler = async(e) => {
+        const formData = { name ,email, password , graduation , phone }
         e.preventDefault()
         if(!name || !email)
         {
@@ -29,17 +30,14 @@ function Signup() {
         {
             //const { data } = await axios.post("https://hubnex-assignment-hosting-server.vercel.app/api/adduser",{name , email , password , graduation , phone}, config ,{ withCredentials : true } );
 
-            const formData = { name ,email, password , graduation , phone }
-
             const response = await fetch(
-                "https://hubnex-assignment-backend.vercel.app/api/adduser",
+                "https://hubnex-assignment-hosting-server.vercel.app/api/adduser",
                 {
                   method: "POST",
                   headers: {
                     "Content-Type": "application/json",
                   },
                   body: JSON.stringify(formData),
-                  mode: 'no-cors'
                 }
               );
               const data = await response.json();
@@ -51,6 +49,7 @@ function Signup() {
         }
         catch(error)
         {
+            console.log(formData)
             console.log("error ",error.message)
             toast.error('Something Wrong !')
         }
